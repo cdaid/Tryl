@@ -27,19 +27,19 @@
               <form action="/users/register" method="POST" role="form" class="text-start">
                 <div class="input-group input-group-outline my-3">
                   <label class="form-label">Name</label>
-                  <input type="string" name="name" value="<%= typeof name != 'undefined' ? name: '' %>" class="form-control" required />
+                  <input type="string" name="name" value="" class="form-control" required />
                 </div>
                 <div class="input-group input-group-outline my-3">
                   <label class="form-label">Email</label>
-                  <input type="email" name="email" value="<%= typeof email != 'undefined' ? email: '' %>" class="form-control" required />
+                  <input type="email" name="email" value="" class="form-control" required />
                 </div>
                 <div class="input-group input-group-outline my-3">
                   <label class="form-label">Password</label>
-                  <input type="password" name="password" value="<%= typeof password != 'undefined' ? password: '' %>" class="form-control" required />
+                  <input type="password" name="password" value="" class="form-control" required />
                 </div>
                 <div class="input-group input-group-outline my-3">
                   <label class="form-label">Confirm Password</label>
-                  <input type="password" name="password2" value="<%= typeof password2 != 'undefined' ? password2: '' %>" class="form-control" required />
+                  <input type="password" name="password2" value="" class="form-control" required />
                 </div>
                 <span style="color: #666666;"><%= include ("./partials/messages"); %></span>
                 <div class="text-center">
@@ -55,3 +55,9 @@
       </div>
     </div>
   </div>
+  <!--Form Values:
+  <%= typeof name != 'undefined' ? name: '' %>
+  <%= typeof email != 'undefined' ? email: '' %>
+  <%= typeof password != 'undefined' ? password: '' %>
+  <%= typeof password2 != 'undefined' ? password2: '' %>
+  -->
