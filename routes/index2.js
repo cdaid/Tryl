@@ -9,10 +9,6 @@ router.get('/index', ensureAuthenticated, async (req, res) => {
     res.render('index', {
         name: req.user.name
     });
-    //try {
-    //    const submissions = await Tryl.find({ user: req.user.id })
-    //} catch (err) {
-
-    //}
 });
+
 module.exports = router;

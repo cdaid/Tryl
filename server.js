@@ -83,7 +83,16 @@ const trylSchema = {
 
 const Tryl = mongoose.model("Tryl", trylSchema);
 
-app.get('/index', function(req, res) {
+//app.get('/', function(req, res) {
+//    Tryl.find({}, function(err, tryls) {
+//        res.render('index', {
+//          trialList: tryls,
+//          moment: moment
+//        })
+//    })
+//});
+
+app.get("/", function(req, res) {
     Tryl.find({}, function(err, tryls) {
         res.render('index', {
           trialList: tryls,
@@ -91,6 +100,7 @@ app.get('/index', function(req, res) {
         })
     })
 });
+
 
 app.post("/", function(req, res) {
     let newTryl = new Tryl({
@@ -116,7 +126,7 @@ app.get('/home', (req, res) => {
 });
 
 app.get('/index', (req, res) => {
-    res.render("index", {title: "Tryl"});
+    res.render("index");
 });
 
 app.get('/register', (req, res) => {
