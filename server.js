@@ -1,13 +1,11 @@
 //Creates app server
 const express = require("express");
-//const dotenv = require('dotenv');
 const expressLayouts = require('express-ejs-layouts');
 const connectEnsureLogin = require('connect-ensure-login');
 const path = require('path');
 const ejs = require('ejs');
 const mongoose = require("mongoose");
 const morgan = require('morgan')
-//const connectDB = require('./config/db');
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const passportLocalMongoose = require('passport-local-mongoose');
@@ -19,7 +17,7 @@ const session = require ('express-session');
 const MongoStore = require('connect-mongo');
 const moment = require('moment');
 const { isDate } = require("moment");
-
+const {ensureAuthenticated, forwardAuthenticated} = require('./config/auth');
 //Initializes app variable with Express
 const app = express();
 
@@ -29,7 +27,6 @@ const db = require('./config/keys').MongoURI;
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
-
 
 //EJS Middleware
 app.use(expressLayouts);
@@ -57,18 +54,10 @@ require('./config/passport')(passport);
 //Connect Flash
 app.use(flash());
 
-//OLD Connect to MongoDB database
-//mongoose.connect("mongodb+srv://cdaidone:4RMb0merkMaqs0Et@cluster0.rdjhtko.mongodb.net/tryl", {
-//    useNewUrlParser: true,
-//    useUnifiedTopology: true
-//});
-
-
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
-
 
 //Tryl data schema
 const trylSchema = {
@@ -83,16 +72,8 @@ const trylSchema = {
 
 const Tryl = mongoose.model("Tryl", trylSchema);
 
-//app.get('/', function(req, res) {
-//    Tryl.find({}, function(err, tryls) {
-//        res.render('index', {
-//          trialList: tryls,
-//          moment: moment
-//        })
-//    })
-//});
-
-app.get("/", function(req, res) {
+/*ensure*/
+app.get("/", ensureAuthenticated, function(req, res) {
     Tryl.find({}, function(err, tryls) {
         res.render('index', {
           trialList: tryls,
@@ -102,7 +83,9 @@ app.get("/", function(req, res) {
 });
 
 
-app.post("/", function(req, res) {
+/*ensure*/
+/*
+app.post("/", ensureAuthenticated, async function(req, res) {
     let newTryl = new Tryl({
         companyname: req.body.companyname,
         trialduration: req.body.trialduration,
@@ -110,6 +93,17 @@ app.post("/", function(req, res) {
     });
     newTryl.save();
     res.redirect('/');
+});*/
+
+app.post("/", ensureAuthenticated, async function (req, res) {
+    try {
+        req.body.user=req.user.id 
+        await Tryl.create(req.body)
+        res.redirect('/')
+    } catch (err) {
+        console.error(err)
+        res.render('error/500')
+    }
 });
 
 //Global Vars
@@ -125,22 +119,32 @@ app.get('/home', (req, res) => {
     res.render("home", {title: "Home"});
 });
 
-app.get('/index', (req, res) => {
-    res.render("index");
+app.get('/index', ensureAuthenticated, async (req, res) => {
+    try {
+        const submissions = await Tryl.find({ user: req.user.id })
+        res.render("index", {
+            name: req.user.name,
+        })
+    } catch (err) {
+        console.err(err)
+        res.render('error/500')
+    };
 });
 
 app.get('/register', (req, res) => {
     res.render("register");
 });
 
-app.get('/login', (req, res) => {
+app.get('/login', forwardAuthenticated, (req, res) => {
     res.render("login");
 });
-app.get('/', (req, res) => {
+
+app.get('/', ensureAuthenticated, (req, res) => {
     res.render("index");
 });
 
 app.use('/', require('./routes/index2'));
+
 app.use('/users', require('./routes/users'));
 
 app.listen(3000, () => {
