@@ -1,13 +1,11 @@
 //Creates app server
 const express = require("express");
-//const dotenv = require('dotenv');
 const expressLayouts = require('express-ejs-layouts');
 const connectEnsureLogin = require('connect-ensure-login');
 const path = require('path');
 const ejs = require('ejs');
 const mongoose = require("mongoose");
 const morgan = require('morgan')
-//const connectDB = require('./config/db');
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const passportLocalMongoose = require('passport-local-mongoose');
@@ -29,7 +27,6 @@ const db = require('./config/keys').MongoURI;
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
-
 
 //EJS Middleware
 app.use(expressLayouts);
@@ -57,18 +54,10 @@ require('./config/passport')(passport);
 //Connect Flash
 app.use(flash());
 
-//OLD Connect to MongoDB database
-//mongoose.connect("mongodb+srv://cdaidone:4RMb0merkMaqs0Et@cluster0.rdjhtko.mongodb.net/tryl", {
-//    useNewUrlParser: true,
-//    useUnifiedTopology: true
-//});
-
-
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
-
 
 //Tryl data schema
 const trylSchema = {
@@ -83,15 +72,6 @@ const trylSchema = {
 
 const Tryl = mongoose.model("Tryl", trylSchema);
 
-//app.get('/', function(req, res) {
-//    Tryl.find({}, function(err, tryls) {
-//        res.render('index', {
-//          trialList: tryls,
-//          moment: moment
-//        })
-//    })
-//});
-
 app.get("/", function(req, res) {
     Tryl.find({}, function(err, tryls) {
         res.render('index', {
@@ -100,7 +80,6 @@ app.get("/", function(req, res) {
         })
     })
 });
-
 
 app.post("/", function(req, res) {
     let newTryl = new Tryl({
@@ -141,6 +120,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/', require('./routes/index2'));
+
 app.use('/users', require('./routes/users'));
 
 app.listen(3000, () => {
