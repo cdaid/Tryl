@@ -1,5 +1,5 @@
 # Tryl
-A class project by three NYU Stern Tech MBA students.
+A class project by three NYU Stern Tech MBA students. A video demo is provided under the READ/WATCH folder - you can see our mid-point demo as of November 2022 and the final demo as of December 2022.
 
 About Tryl
 Tryl is the ultimate tool for managing your free trial subscriptions, no more worrying about being charged for a subscription you forgot to cancel! 
