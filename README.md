@@ -7,9 +7,14 @@ Tryl is the ultimate tool for managing your free trial subscriptions, no more wo
 <h3>Current features:</h3>
 <ul>
 <li> Create Account</li>
+  ![](usercreation_demo.gif)
 <li> Existing User Login/Logout</li>
+  ![](login_demo.gif)
 <li> Add a new trial</li>
+  ![](newtrial_demo.gif)
 </ul>
+
+![](login_submit_logout.gif)
 
 <h3>Future features:</h3>
 <ul>
