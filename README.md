@@ -20,7 +20,9 @@ Tryl is the ultimate tool for managing your free trial subscriptions, no more wo
  </p>
 </ul>
 
+<p align="center">
 <img src="Demos/login_submit_logout.gif" wdith="600" align="center">
+</p><br />
 
 <h3>Future features:</h3>
 <ul>
