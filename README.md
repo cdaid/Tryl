@@ -1,8 +1,7 @@
 # Tryl
-A class project by three NYU Stern Tech MBA students. A video demo is provided under the READ/WATCH folder - you can see our mid-point demo as of November 2022 and the final demo as of December 2022.
 
-About Tryl
-Tryl is the ultimate tool for managing your free trial subscriptions, no more worrying about being charged for a subscription you forgot to cancel! 
+<h2>About Tryl</h2><br />
+<p>Three NYU Stern Tech MBA students developed Tryl as a class project. This tool helps manage your free trial subscriptions and prevents you from being charged for a subscription that you forgot to cancel. Tryl allows you to create an account, log in, add a new free trial, and view previously submitted trials</p>
 
 <h3>Current features:</h3>
 <ul>
@@ -21,13 +20,8 @@ Tryl is the ultimate tool for managing your free trial subscriptions, no more wo
 </ul>
 
 <p align="center">
-<img src="Demos/login_submit_logout.gif" wdith="600" align="center">
+<img src="Demos/login_submit_logout_demo.gif" wdith="600" align="center">
 </p><br />
-
-<h3>Future features:</h3>
-<ul>
-  <li>Email notifications about expiring trials</li>
-</ul>
 
 <h3>The Tech Stack</h3>
 <ul>
@@ -37,7 +31,7 @@ Tryl is the ultimate tool for managing your free trial subscriptions, no more wo
   <li> Moment</li>
   <li> Bcrypt</li>
   <li> Mongoose</li>
-  <li>Connect-Flash</li>
-  <li>Session</li>
-  <li>MongoDB</li>
+  <li> Connect-Flash</li>
+  <li> Session</li>
+  <li> MongoDB</li>
 </ul>
