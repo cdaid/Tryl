@@ -3,6 +3,10 @@
 <h2>About Tryl</h2><br />
 <p>Three NYU Stern Tech MBA students developed Tryl as a class project. This tool helps manage your free trial subscriptions and prevents you from being charged for a subscription that you forgot to cancel. Tryl allows you to create an account, log in, add a new free trial, and view previously submitted trials</p>
 
+<p align="center">
+<img src="Demos/login_submit_logout_demo.gif" width="650" align="center" style="padding: 10px;">
+</p><br />
+
 <h3>Current features:</h3>
 <ul>
  <li><b> Create Account:</b> Ability to create a new user account with rules to ensure an email is provided, passwords match, and password meets requirement of at least 6 characters.</li><br />
@@ -15,13 +19,9 @@
  </p>
  <li> <b>Add a new trial:</b> Add a new trial through modal-based form and see data displayed in table below.</li><br />
  <p align="center" >
-  <img src="Demos/newtrial_demo.gif" width="600" style="padding-bottom: 10px;">
+  <img src="Demos/newtrial_demo.gif" width="650" style="padding-bottom: 10px;">
  </p>
 </ul>
-
-<p align="center">
-<img src="Demos/login_submit_logout_demo.gif" wdith="600" align="center">
-</p><br />
 
 <h3>The Tech Stack</h3>
 <ul>
