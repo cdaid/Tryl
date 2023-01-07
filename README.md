@@ -7,7 +7,7 @@ Tryl is the ultimate tool for managing your free trial subscriptions, no more wo
 <h3>Current features:</h3>
 <ul>
 <li> Create Account: Ability to create a new user account with rules to ensure an email is provided, passwords match, and password meets requirement of at least 6 characters.</li>
- <img src="Demos/usercreation_demo.gif">
+ <img src="Demos/usercreation_demo.gif" width="400">
 <li> User Login/Logout: Ability to login once user is created with authentication rules and ability to logout.</li>
   <img src="Demos/login_demo.gif">
 <li> Add a new trial: Add a new trial through modal-based form and see data displayed in table below.</li>
